@@ -1,0 +1,2840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Lato:ital,wght@0,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>Abo Nabeel.org</title>
+    <style>
+        /* Start Global Rules */
+        :root {
+            --main-color: #2196f3;
+            --main-color-alt: #1787e0;
+            --main-transition: 0.3s;
+            --main-padding-top: 100px;
+            --main-padding-bottom: 100px;
+            --section-background: #ececec;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            color: ghostwhite;
+            background-color: var(--main-color);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Cairo", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-title {
+            margin: 100px auto;
+            border: 2px solid black;
+            padding: 10px 20px;
+            font-size: 30px;
+            width: fit-content;
+            position: relative;
+            z-index: 1;
+            transition: var(--main-transition);
+            cursor: pointer;
+        }
+
+        .main-title::before,
+        .main-title::after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .main-title::before {
+            left: -30px;
+        }
+
+        .main-title:hover::before {
+            z-index: -1;
+            animation: left-move 0.5s linear forwards;
+        }
+
+        .main-title:hover::after {
+            z-index: -1;
+            animation: right-move 0.5s linear forwards;
+        }
+
+        @keyframes left-move {
+            50% {
+                left: 0;
+                width: 12px;
+                height: 12px;
+            }
+
+            100% {
+                left: 0;
+                border-radius: 0;
+                width: 50%;
+                height: 100%;
+            }
+        }
+
+        @keyframes right-move {
+            50% {
+                right: 0;
+                width: 12px;
+                height: 12px;
+            }
+
+            100% {
+                right: 0;
+                border-radius: 0;
+                width: 50%;
+                height: 100%;
+            }
+        }
+
+        .main-title:hover {
+            color: white;
+            border-color: white;
+            transition-delay: 0.5s;
+        }
+
+        .main-title::after {
+            right: -30px;
+        }
+
+        /* Start Button */
+        .button {
+            width: fit-content;
+            background: var(--main-color);
+            padding: 7px;
+            position: fixed;
+            text-align: center;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 3px;
+            z-index: 3;
+            transition: var(--main-transition);
+        }
+
+        .button:hover {
+            background-color: #009688;
+        }
+
+        .button a {
+            color: rgb(253, 253, 253);
+        }
+
+        .button a i {
+            text-align: center;
+            animation: top-down 1.5s infinite;
+        }
+
+        @keyframes top-down {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40%,
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+        /* End Button */
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+
+        .spikes {
+            position: relative;
+        }
+
+        .spikes::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 30px;
+            z-index: 1;
+            background-image: linear-gradient(135deg, white 25%, transparent 25%), linear-gradient(225deg, white 25%, transparent 25%);
+            background-size: 30px 30px;
+        }
+
+        .dots {
+            background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/dots.png");
+            height: 186px;
+            width: 204px;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+
+        .dots-up {
+            top: 200px;
+            right: 0;
+        }
+
+        .dots-down {
+            bottom: 200px;
+            left: 0;
+        }
+
+        /* Start Global Rules */
+        /* Start header */
+        .header {
+            background-color: white;
+            position: relative;
+            -webkit-box-shadow: 0 0 10px #ddd;
+            -moz-box-shadow: 0 0 10px #ddd;
+            box-shadow: 0 0 10px #ddd;
+            z-index: 2;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .header .logo {
+            color: var(--main-color);
+            font-size: 26px;
+            font-weight: bold;
+            height: 72px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--main-transition);
+        }
+
+        @media (max-width: 767px) {
+            .header .logo {
+                width: 100%;
+                height: 50px;
+            }
+        }
+
+        .header .main-nav {
+            display: flex;
+        }
+
+        @media (max-width: 767px) {
+            .header .main-nav {
+                margin: auto;
+            }
+        }
+
+        /* Start Megamenu */
+        .header .mega-menu {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            padding: 30px;
+            background-color: white;
+            border-bottom: 3px solid var(--main-color);
+            z-index: -1;
+            display: none;
+            gap: 40px;
+            top: calc(100% + 50px);
+        }
+
+        .header .main-nav>li:hover .mega-menu {
+            display: flex;
+            top: calc(100% + 1px);
+        }
+
+        @media (max-width: 767px) {
+            .header .mega-menu {
+                flex-direction: column;
+                gap: 0;
+                padding: 5px;
+            }
+        }
+
+        .header .mega-menu .links {
+            min-width: 250px;
+            flex: 1;
+        }
+
+        .header .mega-menu .links li {
+            position: relative;
+        }
+
+        @media (max-width: 767px) {
+            .header .mega-menu .links li:first-of-type li:last-child {
+                border-bottom: 1px solid #e9e6e6;
+            }
+        }
+
+        .header .mega-menu .links li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #fafafa;
+            z-index: -1;
+            transition: var(--main-transition);
+        }
+
+        .header .mega-menu .links li:hover::before {
+            width: 100%;
+        }
+
+        .header .mega-menu .links li:not(:last-child) {
+            border-bottom: 1px solid #e9e6e6;
+        }
+
+        .header .mega-menu .links li a {
+            color: var(--main-color);
+            padding: 15px;
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .header .mega-menu .links li a i {
+            margin-right: 10px;
+        }
+
+        .header .mega-menu .image img {
+            max-width: 100%;
+        }
+
+        @media (max-width: 991px) {
+            .header .mega-menu .image img {
+                display: none;
+            }
+        }
+
+        /* End Megamenu */
+
+        .header .main-nav>li>a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 72px;
+            position: relative;
+            color: black;
+            padding: 0 40px;
+            transition: var(--main-transition);
+            overflow: hidden;
+        }
+
+        @media (max-width: 767px) {
+            .header .main-nav>li>a {
+                padding: 10px;
+                font-size: 14px;
+                height: 30px;
+            }
+        }
+
+        .header .main-nav>li>a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: var(--main-color);
+            top: 0;
+            left: -100%;
+            transition: var(--main-transition);
+        }
+
+        .header .main-nav>li>a:hover {
+            color: var(--main-color);
+            background-color: #fafafa;
+        }
+
+        .header .main-nav>li>a:hover::before {
+            left: 0;
+        }
+
+        /* End header */
+        /* Start Landing */
+        .landing {
+            position: relative;
+        }
+
+        @media (max-width: 991px) {
+            .landing .image img {
+                display: none;
+            }
+
+            .landing .text h1 {
+                text-align: center;
+            }
+
+            .landing .text p {
+                font-size: 23px;
+                max-width: 400px;
+                color: #666;
+                line-height: 1.7;
+            }
+        }
+
+        .landing::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -40px;
+            width: 100%;
+            height: 100%;
+            background-color: #ececec;
+            z-index: -1;
+            transform: skewY(-4deg);
+            transform-origin: top left;
+        }
+
+        .landing .container {
+            min-height: calc(100vh - 72px);
+            display: flex;
+            align-items: center;
+            /* padding: 130px; */
+        }
+
+        .landing .text {
+            text-align: center;
+        }
+
+        .landing .text h1 {
+            text-align: left;
+            letter-spacing: -2.5px;
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .landing .text p {
+            text-align: left;
+            font-size: 23px;
+            max-width: 500px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .landing .image img {
+            position: relative;
+            width: 600px;
+            animation: up-and-down 5s linear infinite;
+        }
+
+        @keyframes up-and-down {
+
+            0%,
+            100% {
+                top: 0;
+            }
+
+            50% {
+                top: -50px;
+            }
+        }
+
+        .landing .go-down {
+            color: var(--main-color);
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            transition: var(--main-transition);
+        }
+
+        .landing .go-down i {
+            animation: bouncing 1.5s infinite;
+        }
+
+        @keyframes bouncing {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40%,
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .landing .go-down:hover {
+            color: #009688;
+        }
+
+        /* End Landing */
+        /* Start Article */
+        .articles {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+        }
+
+        .articles .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .articles .box img {
+            width: 100%;
+            max-width: 100%;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .articles .box {
+            box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+            background-color: white;
+            overflow: hidden;
+            transition: transform var(--main-transition),
+                box-shadow var(--main-transition);
+        }
+
+        .articles .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+        }
+
+        .articles .box .content {
+            padding: 20px;
+        }
+
+        .articles .box .content h3 {
+            margin: 0;
+        }
+
+        .articles .box .content p {
+            color: #777;
+            margin: 10px 0 0;
+            line-height: 1.2;
+        }
+
+        .articles .container .box .info {
+            padding: 20px;
+            border-top: 1px solid #e6e6e7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .articles .container .box .info a {
+            color: var(--main-color);
+            font-weight: bold;
+        }
+
+        .articles .box .info a {
+            color: var(--main-color);
+        }
+
+        .articles .box .info i {
+            color: var(--main-color);
+            transition: var(--main-transition);
+        }
+
+        .articles .box:hover .info i {
+            animation: moving-arrow 0.6s linear infinite;
+        }
+
+        @keyframes moving-arrow {
+            100% {
+                transform: translateX(10px);
+            }
+        }
+
+        /* End Article */
+        /* start Gallery */
+        .gallery {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: var(--section-background);
+        }
+
+        .gallery .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .gallery .box {
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%),
+                0px 2px 4px 0px rgb(0 0 0 / 12%);
+        }
+
+        .gallery .box .image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery .box .image::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(255 255 255 / 20%);
+            width: 0px;
+            height: 0px;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .gallery .box .image:hover::before {
+            animation: flashing 1s;
+        }
+
+        @keyframes flashing {
+
+            0%,
+            40% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                width: 200%;
+                height: 200%;
+            }
+        }
+
+        .gallery .box img {
+            max-width: 100%;
+            transition: var(--main-transition);
+        }
+
+        .gallery .box .image:hover img {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* End Gallery */
+        /* Start Features */
+        .features {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: white;
+        }
+
+        .features .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .features .box {
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .features .box .img-holder {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features .box .img-holder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .features .box .img-holder::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            border-style: solid;
+            border-width: 0px 0px 170px 500px;
+            border-color: transparent transparent white transparent;
+            transition: var(--main-transition);
+        }
+
+        .features .box:hover .img-holder::after {
+            border-width: 170px 600px 170px 0px;
+        }
+
+        .features .box .img-holder img {
+            max-width: 100%;
+        }
+
+        .features .box h2 {
+            position: relative;
+            font-size: 40px;
+            margin: auto;
+            width: fit-content;
+        }
+
+        .features .box h2::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 15px;
+            height: 5px;
+            width: calc(100% - 30px);
+        }
+
+        .features .box p {
+            line-height: 2;
+            font-size: 20px;
+            margin: 30px 0;
+            padding: 25px;
+            color: #777;
+        }
+
+        .features .box a {
+            display: block;
+            border: 3px solid transparent;
+            width: fit-content;
+            margin: 0 auto 30px;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 30px;
+            border-radius: 6px;
+            transition: var(--main-transition);
+        }
+
+        .features .quality .img-holder::before {
+            background-color: rgb(244 64 54 / 60%);
+        }
+
+        .features .quality h2::after {
+            background-color: #f44036;
+        }
+
+        .features .quality a {
+            color: #f44036;
+            border-color: #f44036;
+            background: linear-gradient(to right, #f44036 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+
+        .features .box:hover a {
+            background-position: left bottom;
+            color: white;
+        }
+
+        .features .time .img-holder::before {
+            background-color: rgb(0 150 136 / 60%);
+        }
+
+        .features .time h2::after {
+            background-color: #009688;
+        }
+
+        .features .time a {
+            color: #009688;
+            border-color: #009688;
+            background: linear-gradient(to right, #009688 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+
+        .features .passion .img-holder::before {
+            background-color: rgb(3 169 244 / 60%);
+        }
+
+        .features .passion h2::after {
+            background-color: #03a9f4;
+        }
+
+        .features .passion a {
+            color: #03a9f4;
+            border-color: #03a9f4;
+            background: linear-gradient(to right, #03a9f4 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+
+        /* End Features */
+        /* Start Testimonials  */
+        .testimonials {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: var(--section-background);
+        }
+
+        .testimonials .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonials .container .box {
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .testimonials .container .box img {
+            position: absolute;
+            right: -10px;
+            top: -16px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border: 10px solid var(--section-background);
+        }
+
+        .testimonials .container .box h3 {
+            font-size: 20px;
+            margin: 0 0 10px;
+        }
+
+        .testimonials .container .box .title {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .testimonials .container .box .rate .filled {
+            color: #ffc107;
+        }
+
+        .testimonials .container .box p {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* End Testimonials  */
+        /* Start Team Members */
+        .team {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+        }
+
+        .team .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .team .box {
+            position: relative;
+        }
+
+        .team .box::before,
+        .team .box::after {
+            content: "";
+            background-color: #f3f3f3;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .team .box::before {
+            width: calc(100% - 60px);
+            z-index: -2;
+        }
+
+        .team .box::after {
+            z-index: -1;
+            background-color: #e4e4e4;
+            width: 0;
+            transition: var(--main-transition);
+        }
+
+        .team .box:hover::after {
+            width: calc(100% - 60px);
+        }
+
+        .team .box .data {
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+        }
+
+        .team .box .data img {
+            width: calc(100% - 60px);
+            border-radius: 10px;
+            transition: var(--main-transition);
+        }
+
+        .team .box:hover img {
+            filter: grayscale(100%);
+        }
+
+        .team .box .data .social {
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .team .box .data .social a {
+            width: 60px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--main-transition);
+        }
+
+        .team .box .data .social a:hover i {
+            color: var(--main-color);
+        }
+
+        .team .box .data .social i {
+            color: #777;
+        }
+
+        .team .box .info {
+            padding-left: 80px;
+        }
+
+        .team .box .info h3 {
+            margin-bottom: 0;
+            color: var(--main-color);
+            font-size: 22px;
+            transition: var(--main-transition);
+        }
+
+        .team .box:hover .info h3 {
+            color: #777;
+        }
+
+        .team .box .info p {
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* End Team Members */
+        /* Start Services */
+        .services {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: var(--section-background);
+        }
+
+        .services .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .services .box {
+            position: relative;
+            background-color: white;
+            box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+            transition: var(--main-transition);
+        }
+
+        .services .box::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -5px;
+            background-color: var(--main-color);
+            width: 0;
+            height: 3px;
+            transition: var(--main-transition);
+        }
+
+        .services .box:hover {
+            transform: translateY(-10px);
+        }
+
+        .services .box:hover::before {
+            width: 100%;
+        }
+
+        .services .box>i {
+            color: #d5d5d5;
+            margin: 30px auto 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .services .box>h3 {
+            text-align: center;
+            margin: 20px 0 40px;
+            font-size: 25px;
+            color: var(--main-color);
+        }
+
+        .services .box .info {
+            padding: 15px;
+            position: relative;
+            background-color: #f9f9f9;
+            text-align: right;
+        }
+
+        .services .box .info::before {
+            content: "Eslam";
+            position: absolute;
+            background-color: var(--main-color);
+            color: white;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 80px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 15px;
+        }
+
+        .services .box .info::after {
+            content: "";
+            position: absolute;
+            background-color: #d5d5d5;
+            top: 0;
+            left: 80px;
+            width: 50px;
+            height: 100%;
+            transform: skewx(-30deg);
+        }
+
+        .services .box .info a {
+            color: var(--main-color);
+        }
+
+        /* End Services */
+        /* Start our-skills */
+        .our-skills {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+        }
+
+        .our-skills .container {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 991px) {
+            .our-skills .container img {
+                display: none;
+            }
+        }
+
+        .our-skills .skills {
+            flex: 1;
+        }
+
+        .our-skills .skill h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .our-skills .skill .the-progress {
+            height: 30px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .our-skills .skill .the-progress span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--main-color);
+            height: 100%;
+        }
+
+        /* End our-skills */
+        /* Start Work-steps */
+        .work-steps {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: var(--section-background);
+        }
+
+        .work-steps .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .work-steps .image {
+            max-width: 100%;
+            margin-right: 100px;
+        }
+
+        @media (max-width: 991px) {
+            .work-steps .image {
+                display: none;
+            }
+        }
+
+        .work-steps .info .box {
+            background-color: #f6f5f5;
+            padding: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 1px solid white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .work-steps .info .box::before {
+            content: "";
+            background-color: #ededed;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            z-index: -1;
+            transition: var(--main-transition);
+        }
+
+        .work-steps .info .box:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .work-steps .info .box img {
+            width: 60px;
+            margin-right: 30px;
+        }
+
+        .work-steps .info .box .text h2 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        .work-steps .info .box .text p {
+            font-size: 18px;
+            color: #777;
+            line-height: 1.5;
+            margin: 10px 0 0;
+        }
+
+        /* End Work-steps */
+        /* Start Event */
+        .events {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+        }
+
+        .events .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .events img {
+            max-width: 450px;
+        }
+
+        @media (max-width: 991px) {
+            .events img {
+                display: none;
+            }
+        }
+
+        .events .info {
+            flex: 1;
+        }
+
+        .events .info .time {
+            display: flex;
+            align-items: center;
+            margin: 20px auto;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .events .info .time .unit {
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            align-items: center;
+            width: 75px;
+            transition: var(--main-transition);
+        }
+
+        .events .info .time .unit:hover,
+        .events .info .time .unit:hover span:last-child {
+            border-color: var(--main-color);
+        }
+
+        .events .info .time .unit span {
+            display: block;
+            transition: var(--main-transition);
+        }
+
+        .events .info .time .unit span:first-child {
+            font-size: 35px;
+            padding: 15px;
+            color: var(--main-color);
+            font-weight: bold;
+        }
+
+        .events .info .time .unit span:last-child {
+            padding: 8px 10px;
+            font-size: 13px;
+            text-align: center;
+            border-top: 1px solid #d4d4d4;
+        }
+
+        .events .title {
+            text-align: center;
+            margin: 40px 0 0;
+            font-size: 30px;
+        }
+
+        .events .discription {
+            text-align: center;
+            line-height: 1.7;
+            font-size: 20px;
+            color: #777;
+        }
+
+        .events .subscribe {
+            width: 100%;
+            margin-top: 100px;
+        }
+
+        .events .subscribe form {
+            width: 600px;
+            margin: 20px auto;
+            padding: 30px 40px;
+            background-color: #f6f5f5;
+            border-radius: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .events .subscribe form {
+                max-width: 100%;
+                padding: 20px;
+                flex-direction: column;
+                border-radius: 0;
+            }
+        }
+
+        .events .subscribe form input[type="email"] {
+            padding: 20px;
+            border-radius: 50px;
+            border: none;
+            flex: 1;
+            caret-color: var(--main-color);
+            color: var(--main-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 767px) {
+            .events .subscribe form input[type="email"] {
+                border-radius: 0;
+            }
+        }
+
+        .events .subscribe form input[type="email"]:focus {
+            outline: none;
+        }
+
+        .events .subscribe form input[type="email"]::placeholder {
+            transition: opacity var(--main-transition);
+        }
+
+        .events .subscribe form input[type="email"]:focus::placeholder {
+            opacity: 0;
+        }
+
+        .events .subscribe form input[type="submit"] {
+            border-radius: 50px;
+            border: none;
+            background-color: var(--main-color);
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            transition: var(--main-transition);
+        }
+
+        @media (max-width: 767px) {
+            .events .subscribe form input[type="submit"] {
+                border-radius: 0;
+            }
+        }
+
+        .events .subscribe form input[type="submit"]:hover {
+            background-color: var(--main-color-alt);
+        }
+
+        /* End Event */
+        /* Start Pricing */
+        .pricing {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-color: var(--section-background);
+        }
+
+        .pricing .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing .box {
+            position: relative;
+            box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+            background-color: white;
+            text-align: center;
+            z-index: 1;
+            transition: var(--main-transition);
+        }
+
+        .pricing .box::before,
+        .pricing .box::after {
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 50%;
+            background-color: #f6f6f6;
+            z-index: -1;
+            transition: var(--main-transition);
+        }
+
+        .pricing .box::before {
+            left: 0;
+            top: 0;
+        }
+
+        .pricing .box::after {
+            right: 0;
+            bottom: 0;
+        }
+
+        .pricing .box:hover::before,
+        .pricing .box:hover::after {
+            width: 100%;
+        }
+
+        @media (min-width: 1200px) {
+            .pricing .popular {
+                top: -20px;
+            }
+        }
+
+        .pricing .popular .label {
+            position: absolute;
+            writing-mode: vertical-lr;
+            color: #ffffff;
+            background-color: var(--main-color);
+            font-weight: bold;
+            padding: 10px 10px 35px 10px;
+            font-size: 18px;
+            right: 21px;
+            width: 40px;
+        }
+
+        .pricing .popular .label::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border-width: 20px;
+            border-color: transparent transparent white transparent;
+            border-style: solid;
+        }
+
+        .pricing .box .title {
+            font-size: 25px;
+            margin: 30px 0;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .pricing .box img {
+            width: 80px;
+            margin-bottom: 30px;
+        }
+
+        .pricing .box .price {
+            margin-bottom: 20px;
+        }
+
+        .pricing .box .price .amount {
+            display: block;
+            color: var(--main-color);
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .pricing .box .price .time {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .pricing .box ul {
+            text-align: left;
+        }
+
+        .pricing .box ul li {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .pricing .box ul li::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f00c";
+            margin-right: 10px;
+            font-weight: 900;
+            color: var(--main-color);
+        }
+
+        .pricing .box a {
+            display: block;
+            width: fit-content;
+            padding: 25px 25px;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            margin: 30px auto 40px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: var(--main-transition);
+        }
+
+        .pricing .box a:hover {
+            background-color: var(--main-color);
+            color: white;
+        }
+
+        /* End Pricing */
+        /* Start Videos */
+        .videos {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+        }
+
+        .videos .holder {
+            display: flex;
+            justify-content: center;
+            background-color: var(--section-background);
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 991px) {
+            .videos .holder {
+                flex-direction: column;
+            }
+        }
+
+        .videos .holder .list {
+            min-width: 300px;
+            background-color: white;
+        }
+
+        .videos .holder .list .name {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .videos .holder .list ul li {
+            padding: 20px;
+            border-top: 1px solid var(--section-background);
+            cursor: pointer;
+            transition: var(--main-transition);
+        }
+
+        .videos .holder .list ul li:hover {
+            color: var(--main-color);
+            background-color: #faf9f9;
+        }
+
+        .videos .holder .list ul li span {
+            display: block;
+            margin-top: 10px;
+            color: #777;
+        }
+
+        .videos .holder .preview {
+            background-color: #e2e2e2;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .videos .holder .preview img {
+            max-width: 100%;
+        }
+
+        .videos .holder .preview .info {
+            padding: 20px;
+            background-color: white;
+            margin-top: 10px;
+        }
+
+        /* End Videos */
+        /* Start Awesome Stats */
+        .stats {
+            padding-top: var(--main-padding-top);
+            padding-bottom: var(--main-padding-bottom);
+            position: relative;
+            background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/stats.jpg");
+            background-size: cover;
+            min-height: 300px;
+        }
+
+        .stats::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255 255 255 / 95%);
+        }
+
+        .stats .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stats>h2 {
+            font-size: 40px;
+            width: fit-content;
+            margin: 0 auto 50px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .stats .box {
+            background-color: white;
+            padding: 30px 15px;
+            text-align: center;
+            position: relative;
+            opacity: 0.8;
+            transition: var(--main-transition);
+        }
+
+        .stats .box::before,
+        .stats .box::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            background-color: var(--main-color);
+            transition: 1s;
+            height: 0;
+        }
+
+        .stats .box::before {
+            top: 0;
+            right: 0;
+        }
+
+        .stats .box::after {
+            bottom: 0;
+            left: 0;
+        }
+
+        .stats .box:hover::before,
+        .stats .box:hover::after {
+            height: 100%;
+        }
+
+        .stats .box .number {
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stats .box .text {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--main-color);
+            font-style: italic;
+        }
+
+        /* End Awesome Stats */
+        /* Start discount */
+        .discount {
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .discount .image {
+            background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/discount-background1.jpg");
+            background-size: cover;
+            color: white;
+            flex-basis: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            animation: change-background 10s linear infinite;
+        }
+
+        @keyframes change-background {
+
+            0%,
+            100% {
+                background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/discount-background1.jpg");
+            }
+
+            50% {
+                background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/discount-background2.jpg");
+            }
+        }
+
+        .discount .image::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(23 135 224 / 97%);
+            z-index: -1;
+        }
+
+        @media (max-width :991px) {
+            .discount .image {
+                flex-basis: 100%;
+            }
+        }
+
+        .discount .form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-basis: 50%;
+        }
+
+        @media (max-width :991px) {
+            .discount .form {
+                flex-basis: 100%;
+            }
+        }
+
+        .discount .form .input {
+            display: block;
+            width: 100%;
+            margin-bottom: 25px;
+            padding: 15px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background-color: #f9f9f9;
+            caret-color: var(--main-color);
+        }
+
+        .discount .form textarea.input {
+            height: 200px;
+            resize: none;
+        }
+
+        .discount .form .input:focus {
+            outline: none;
+        }
+
+        .discount .form [type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--main-color);
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            transition: var(--main-transition);
+        }
+
+        .discount .form [type="submit"]:hover {
+            background-color: var(--main-color-alt);
+        }
+
+        .discount .content {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .discount .content h2 {
+            font-size: 40px;
+            letter-spacing: -2px;
+        }
+
+        .discount .content p {
+            line-height: 1.6;
+            font-size: 18px;
+            max-width: 500px;
+        }
+
+        .discount .content img {
+            width: 300px;
+            max-width: 100%;
+        }
+
+        /* End discount */
+        /* Start Footer */
+        .footer {
+            background-color: #191919;
+            padding: 70px 0;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        @media (max-width: 767px) {
+            .footer .box {
+                text-align: center;
+            }
+
+            .footer .box .social {
+                display: flex;
+                justify-content: center;
+            }
+
+            .footer .box .line {
+                flex-direction: column;
+            }
+
+            .footer .box .line i {
+                margin-bottom: 10px;
+            }
+        }
+
+        .footer .box h3 {
+            color: #fff;
+            font-size: 50px;
+            margin: 0 0 20px;
+        }
+
+        .footer .box .social {
+            display: flex;
+        }
+
+        .footer .box .social li {
+            margin-right: 10px;
+        }
+
+        .footer .box .social li a {
+            background-color: #313131;
+            color: #b9b9b9;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            transition: var(--main-transition);
+        }
+
+        .footer .box .social .facebook:hover {
+            background-color: #1877f2;
+        }
+
+        .footer .box .social .twitter:hover {
+            background-color: #1DA1f2;
+        }
+
+        .footer .box .social .youtube:hover {
+            background-color: #ff0000;
+        }
+
+        .footer .box .text {
+            line-height: 2;
+            color: #b9b9b9;
+        }
+
+        .footer .box .links li {
+            padding: 15px 0;
+            transition: var(--main-transition);
+        }
+
+        .footer .box .links li:not(:last-child) {
+            border-bottom: 1px solid #444;
+        }
+
+        .footer .box .links li:hover {
+            padding-left: 10px;
+        }
+
+        .footer .box .links li:hover a {
+            color: white;
+        }
+
+        .footer .box .links li a {
+            color: #b9b9b9;
+            transition: var(--main-transition);
+        }
+
+        .footer .box .links li a::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\F101";
+            font-weight: 900;
+            margin-right: 10px;
+            color: var(--main-color);
+        }
+
+        .footer .box .line {
+            display: flex;
+            align-items: center;
+            color: #b9b9b9;
+            margin-bottom: 30px;
+        }
+
+        .footer .box .line i {
+            font-size: 25px;
+            color: var(--main-color);
+            margin-right: 10px;
+        }
+
+        .footer .box .line .info {
+            line-height: 1.8;
+            flex: 1;
+        }
+
+        .footer .box .line .info span {
+            display: block;
+        }
+
+        .footer .footer-gallery img {
+            width: 78px;
+            border: 3px solid white;
+            margin: 2px;
+        }
+
+        .footer .copyright {
+            padding: 25px 0;
+            text-align: center;
+            color: white;
+            margin: 50px 0 0;
+            border-top: 1px solid #444;
+        }
+
+        /* End Footer */
+    </style>
+
+</head>
+
+<body>
+    <!-- Start header -->
+    <div class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">Abo Nabeel</a>
+            <ul class="main-nav">
+                <li><a href="#articals">Artical</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#features">Features</a></li>
+                <li>
+                    <a href="#">Other Links</a>
+                    <!-- Start MegaMune -->
+                    <div class="mega-menu">
+                        <div class="image">
+                            <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/megamenu.png"
+                                alt="">
+                        </div>
+                        <ul class="links">
+                            <li>
+                                <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
+                            </li>
+                            <li>
+                                <a href="#team"><i class="far fa-user fa-fw"></i> Team Members</a>
+                            </li>
+                            <li>
+                                <a href="#services"><i class="far fa-building fa-fw"></i> Services</a>
+                            </li>
+                            <li>
+                                <a href="#our-skills"><i class="far fa-check-circle fa-fw"></i> Our Skills</a>
+                            </li>
+                            <li>
+                                <a href="#work-steps"><i class="far fa-clipboard fa-fw"></i> How It Works</a>
+                            </li>
+                        </ul>
+                        <ul class="links">
+                            <li>
+                                <a href="#events"><i class="far fa-calendar-alt fa-fw"></i> Events</a>
+                            </li>
+                            <li>
+                                <a href="#pricing"><i class="fas fa-server fa-fw"></i> Pricing Plans</a>
+                            </li>
+                            <li>
+                                <a href="#video"><i class="far fa-play-circle fa-fw"></i> Top Videos</a>
+                            </li>
+                            <li>
+                                <a href="#stats"><i class="far fa-chart-bar fa-fw"></i> Stats</a>
+                            </li>
+                            <li>
+                                <a href="#discount"><i class="fas fa-percent fa-fw"></i> Request A Discount</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End MegaMenu -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End header -->
+    <!-- start Button -->
+    <div class="button">
+        <a href="#header"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <!-- End Button -->
+    <!-- Strat Landing -->
+    <div class="landing">
+        <div class="container">
+            <div class="text">
+                <h1>Welcome, To Abo Nabeel World</h1>
+                <p>Here Iam gonna share everything about my life. Books Iam reading, Games Iam Playing, Stories and
+                    Events</p>
+            </div>
+            <div class="image">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/landing-image.png" alt="">
+            </div>
+        </div>
+        <a href="#articals" class="go-down">
+            <i class="fas fa-angle-double-down fa-2x"></i>
+        </a>
+    </div>
+    <!-- End Landing -->
+    <!-- Start Articles -->
+    <div class="articles" id="articals">
+        <h2 class="main-title">Articles</h2>
+        <div class="container">
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-01.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="#">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-02.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-03.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-04.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-05.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-06.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-07.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/cat-08.jpg" alt="">
+                <div class="content">
+                    <h3>Test Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit</p>
+                </div>
+                <div class="info">
+                    <a href="">Read More</a>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Articles -->
+    <!-- Start Gallery -->
+    <div class="gallery" id="gallery">
+        <h2 class="main-title">Gallery</h2>
+        <div class="container">
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-01.png" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-02.png" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-03.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-04.png" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-05.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-06.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Gallery -->
+    <!-- Start Features -->
+    <div class="features" id="features">
+        <h2 class="main-title">features</h2>
+        <div class="container">
+            <div class="box quality">
+                <div class="img-holder">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/features-03.jpg"
+                        alt="">
+                </div>
+                <h2>Quality</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+                <a href="#">More</a>
+            </div>
+            <div class="box time">
+                <div class="img-holder">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/features-01.jpg"
+                        alt="">
+                </div>
+                <h2>Time</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+                <a href="#">More</a>
+            </div>
+            <div class="box passion">
+                <div class="img-holder">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/features-02.jpg"
+                        alt="">
+                </div>
+                <h2>Passion</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+                <a href="#">More</a>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Features -->
+    <!-- Start Testimonials -->
+    <div class="testimonials" id="testimonials">
+        <h2 class="main-title">Testimonials</h2>
+        <div class="container">
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-01.png" alt="">
+                <h3>Mohamed Farag</h3>
+                <span class="title">Full Stack Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-02.png" alt="">
+                <h3>Mohamed Ibrahim</h3>
+                <span class="title">Full Stack Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-03.png" alt="">
+                <h3>Eslam Nabil</h3>
+                <span class="title"> Front End Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-04.png" alt="">
+                <h3>Amr Hendawy</h3>
+                <span class="title">Full Stack Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-05.png" alt="">
+                <h3>Sherief Ashraf</h3>
+                <span class="title">Full Stack Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+            <div class="box">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/avatar-06.png" alt="">
+                <h3>Osama Mohamed</h3>
+                <span class="title">Full Stack Developer</span>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus
+                    quaerat ducimus
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End Testimonials -->
+    <!-- Start Team Members -->
+    <div class="team" id="team">
+        <h2 class="main-title">Team Members</h2>
+        <div class="container">
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-01.jpg" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-02.jpg" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-03.jpg" alt="">
+                    <div class=" social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-04.jpg" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-05.png" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-06.png" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-07.jpg" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="data">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/team-08.jpg" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>Name</h3>
+                    <p>Simple Short Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Team team -->
+    <!-- Start Services -->
+    <div class="services" id="services">
+        <h2 class="main-title">SERVICES</h2>
+        <div class="container">
+            <div class="box">
+                <i class="fas fa-user-shield fa-4x"></i>
+                <h3>Security</h3>
+                <div class="info">
+                    <a href="#">Details</a>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-tools fa-4x"></i>
+                <h3>Fixing Issues</h3>
+                <div class="info">
+                    <a href="#">Details</a>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-map-marked-alt fa-4x"></i>
+                <h3>Location</h3>
+                <div class="info">
+                    <a href="#">Details</a>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-laptop-code fa-4x"></i>
+                <h3>Coding</h3>
+                <div class="info">
+                    <a href="#">Details</a>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-palette fa-4x"></i>
+                <h3>Security</h3>
+                <div class="info">
+                    <a href="#">Design</a>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-bullhorn fa-4x"></i>
+                <h3>Marketing</h3>
+                <div class="info">
+                    <a href="#">Details</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Services -->
+    <!-- Start Skills -->
+    <div class="our-skills" id="our-skills">
+        <h2 class="main-title">OUR SKILLS</h2>
+        <div class="container">
+            <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/skills.png" alt="">
+            <div class="skills">
+                <div class="skill">
+                    <h3>HTML <span>80%</span></h3>
+                    <div class="the-progress">
+                        <span style="width: 80%;" data-width="80%"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>CSS <span>85%</span></h3>
+                    <div class="the-progress">
+                        <span style="width: 85%;" data-width="85%"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>JavaScript <span>70%</span></h3>
+                    <div class="the-progress">
+                        <span style="width: 70%;" data-width="70%"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>Python <span>80%</span></h3>
+                    <div class="the-progress">
+                        <span style="width: 80%;" data-width="80%"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Skills -->
+    <!-- Start Work-Steps -->
+    <div class="work-steps" id="work-steps">
+        <h2 class="main-title">HOW IT WORKS ?</h2>
+        <div class="container">
+            <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/work-steps.png" alt=""
+                class="image">
+            <div class="info">
+                <div class="box">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/work-steps-1.png"
+                        alt="">
+                    <div class="text">
+                        <h2>Business Analysis</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam
+                            quis laborum recusandae debitis vel</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/work-steps-2.png"
+                        alt="">
+                    <div class="text">
+                        <h2>Architecture</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam
+                            quis laborum recusandae debitis vel</p>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/work-steps-3.png"
+                        alt="">
+                    <div class="text">
+                        <h2>
+                            Developement</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam
+                            quis laborum recusandae debitis vel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Work-Steps -->
+    <!-- Start Event -->
+    <div class="events" id="events">
+        <div class="dots dots-up"></div>
+        <div class="dots dots-down"></div>
+        <h2 class="main-title">Latest Events</h2>
+        <div class="container">
+            <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/events.png" alt="">
+            <div class="info">
+                <div class="time">
+                    <div class="unit">
+                        <span>15</span>
+                        <span>Days</span>
+                    </div>
+                    <div class="unit">
+                        <span>08</span>
+                        <span>Hours</span>
+                    </div>
+                    <div class="unit">
+                        <span>45</span>
+                        <span>minutes</span>
+                    </div>
+                    <div class="unit">
+                        <span>55</span>
+                        <span>Seconds</span>
+                    </div>
+                </div>
+                <h2 class="title">Tech Masters Event 2021</h2>
+                <p class="discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et vero tenetur
+                    doloremque iusto ut adipisci quam ratione aliquam excepturi nulla in harum, veritatis porro</p>
+            </div>
+            <div class="subscribe">
+                <form action="">
+                    <input type="email" placeholder="Enter Your Email">
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Event -->
+    <!-- Start Prising -->
+    <div class="pricing" id="pricing">
+        <div class="dots dots-up"></div>
+        <div class="dots dots-down"></div>
+        <h2 class="main-title">PRICING PLANS</h2>
+        <div class="container">
+            <div class="box">
+                <h3 class="title">Basic</h3>
+                <img src="	https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/hosting-basic.png
+                " alt="">
+                <div class="price">
+                    <span class="amount">$15</span>
+                    <span class="time">Par Month</span>
+                </div>
+                <ul>
+                    <li>10GB HDD Space</li>
+                    <li>5 Email Addresses</li>
+                    <li>2 Subdomains</li>
+                    <li>4 Databases</li>
+                    <li>Basic Support</li>
+                </ul>
+                <a href="#">Choose plan</a>
+            </div>
+            <div class="box popular">
+                <div class="label">Most Popular</div>
+                <h3 class="title">Advanced</h3>
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/hosting-advanced.png"
+                    alt="">
+                <div class="price">
+                    <span class="amount">$25</span>
+                    <span class="time">Per Month</span>
+                </div>
+                <ul>
+                    <li>20GB HDD Space</li>
+                    <li>10 Email Addresses</li>
+                    <li>5 Subdomains</li>
+                    <li>8 Databases</li>
+                    <li>Advanced Support</li>
+                </ul>
+                <a href="#">Choose plan</a>
+
+            </div>
+            <div class="box">
+                <h3 class="title">Professional</h3>
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/hosting-professional.png"
+                    alt="">
+                <div class="price">
+                    <span class="amount">$45</span>
+                    <span class="time">Per Month</span>
+                </div>
+                <ul>
+                    <li>50GB HDD Space</li>
+                    <li>20 Email Addresses</li>
+                    <li>10 Subdomains</li>
+                    <li>20 Databases</li>
+                    <li>Professional Support</li>
+                </ul>
+                <a href="#">Choose plan</a>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Prising -->
+    <!-- Start Vidoes -->
+    <div class="videos" id="video">
+        <div class="container">
+            <div class="holder">
+                <div class="list">
+                    <div class="name">
+                        Top Vidoes
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <ul>
+                        <li>How To Create Sub Domain<span>05:18</span></li>
+                        <li>Playing With The DNS <span>03:18</span></li>
+                        <li>Everything About The Virtual Hosts <span>05:25</span></li>
+                        <li>How To Monitor Your Website <span>04:16</span></li>
+                        <li>Uncharted Beating The Last Boss <span>07:48</span></li>
+                        <li>Ys Oath In Felghana Overview <span>03:12</span></li>
+                        <li>Ys Series All Games Ending <span>08:10</span></li>
+                    </ul>
+                </div>
+                <div class="preview">
+                    <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/video-preview.jpg"
+                        alt="">
+                    <div class="info">
+                        Everything About The Virtual Hosts
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spikes"></div>
+    <!-- End Vidoes -->
+    <!-- Start Awesome Stats -->
+    <div class="stats" id="stats">
+        <h2>Our Awesome Stats</h2>
+        <div class="container">
+            <div class="box">
+                <i class="far fa-user fa-2x fa-fw"></i>
+                <span class="number" data-goal="150">150</span>
+                <span class="text">Clients</span>
+            </div>
+            <div class="box">
+                <i class="fas fa-code fa-2x fa-fw"></i>
+                <span class="number" data-goal="135">135</span>
+                <span class="text">Projects</span>
+            </div>
+            <div class="box">
+                <i class="fas fa-globe-asia fa-2x fa-fw"></i>
+                <span class="number" data-goal="50">50</span>
+                <span class="text">Countries</span>
+            </div>
+            <div class="box">
+                <i class="far fa-money-bill-alt fa-2x fa-fw"></i>
+                <span class="number" data-goal="500">500</span>
+                <span class="text">Money</span>
+            </div>
+        </div>
+    </div>
+    <!-- End Awesome Stats -->
+    <!-- Start Discount -->
+    <div class="discount" id="discount">
+        <div class="image">
+            <div class="content">
+                <h2>We Have A Discount</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptatibus architecto, suscipit id
+                    maxime nulla iste totam. Quae impedit sit ea possimus eligendi accusamus, in enim beatae ad pariatur
+                    vel!</p>
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/discount.png" alt="">
+            </div>
+        </div>
+        <div class="form">
+            <div class="content">
+                <h2>Request A Discount</h2>
+                <form action="">
+                    <input class="input" type="text" placeholder="Your Name" name="name">
+                    <input class="input" type="email" placeholder="Your Email" name="email">
+                    <input class="input" type="text" placeholder="Your Phone" name="mobile">
+                    <textarea class="input" placeholder="Tell Us About Your Needs" name="message"></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Discount -->
+    <!-- Start Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <h3>Abo NAbeel</h3>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem,
+                    dignissimos iste aspernater</p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li><a href="#">Important Link 1</a></li>
+                    <li><a href="#">Important Link 2</a></li>
+                    <li><a href="#">Important Link 3</a></li>
+                    <li><a href="#">Important Link 4</a></li>
+                    <li><a href="#">Important Link 5</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">Egypt, Giza, Inside The Sphinx, Room Number 220</div>
+                </div>
+                <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">Business Hours: From 10:00 To 18:00</div>
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        <span>01029661083</span>
+                        <span>01120883781</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box footer-gallery">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-01.png" alt="">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-02.png" alt="">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-03.jpg" alt="">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-04.png" alt="">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-05.jpg" alt="">
+                <img src="https://elzerowebschool.github.io/HTML_And_CSS_Template_Three/imgs/gallery-06.png" alt="">
+            </div>
+            <p class="copyright">Made with &lt;3 by Abo Nabeel</p>
+        </div>
+    </div>
+    <!-- End Footer -->
+</body>
+
+</html>
